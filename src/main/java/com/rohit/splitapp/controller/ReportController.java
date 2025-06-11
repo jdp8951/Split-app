@@ -1,7 +1,9 @@
 package com.rohit.splitapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +30,7 @@ public class ReportController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-       @GetMapping("/{groupId}/export")
+    @GetMapping("/{groupId}/export")
     public ResponseEntity<byte[]> exportReport(@PathVariable UUID groupId, @RequestParam String fileType) {
         System.out.println("Export request: groupId=" + groupId + ", fileType=" + fileType);
         try {
@@ -50,4 +52,5 @@ public class ReportController {
                     .body(null);
         }
     }
+
 }
